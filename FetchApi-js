@@ -1,0 +1,84 @@
+console.log(' Hello Api')
+
+let mybtn = document.getElementById('myBtn');
+let content = document.getElementsByClassName('content');
+//mybtn.addEventListener('click',getData)
+
+// function getData(){
+//     console.log('hello')
+//     fetch(`https://jsonplaceholder.typicode.com/todos`).then((response)=>{ // returns promise
+//         return response.text();  // shows all data
+//     }).then((data)=>{
+//         console.log(data)
+//     })
+// }
+
+function getData(){
+    console.log('hello')
+    fetch("https://jsonplaceholder.typicode.com/todos").then((response)=>{ // returns promise
+        return response.json();  // shows by part
+    }).then((data)=>{
+        console.log(data)
+        // for(let each of data){
+        //     if(each.completed){
+        //         //console.log('True',each.title)
+        //     }else{
+        //         console.log('False',each.title)
+        //     }
+        // }
+    })
+}
+
+
+// console.log('before data')
+// getData()
+// console.log('after data')
+
+
+
+
+
+/// ----------------- Post Data ----------------------
+//----------------------------------------------------
+
+
+
+function postData(){         // HERE FETCH TAKES TWO PARAMETRS 1-URL ANS 2-PARAMS
+    console.log('hello')
+    let url = "https://jsonplaceholder.typicode.com/todos";
+    // data = '{"userId":"11","id":201,"title": "Added Object","completed":"true"}'
+    // params = {
+    //     method : 'post',
+    //     headers: {
+    //         'content-type' : 'application/json'
+    //     },
+    //     body: data
+        
+    // };
+    fetch(url ).then((response)=>{ // returns promise
+        return response.json(params);  // shows by part
+    }).then((data)=>{
+        console.log(data)
+        for(let each of data){
+
+            if(each.completed){
+                console.log('True',each.title)
+            }else{
+                //console.log('False',each.title)
+            }
+        }
+    }).catch(()=>{
+        console.log('show error')
+    })
+}
+
+
+
+
+
+console.log('before data')
+postData()
+console.log('after data')
+setTimeout(()=>{
+    getData()
+},5000)
